@@ -1,0 +1,22 @@
+[
+  {
+    "Time": "2026-11-20T02:00:00Z",
+    "Source": "orderflow.aws.rds",
+    "Resources": [
+      "arn:aws:rds:us-east-1:111122223333:cluster:orderflow-pg18"
+    ],
+    "DetailType": "AuroraLockCascade",
+    "Detail": "{\"cluster\":\"orderflow-pg18\",\"blocked\":42}",
+    "EventBusName": "orderflow-ops-bus"
+  },
+  {
+    "Time": "2026-11-20T02:00:12Z",
+    "Source": "orderflow.aws.vpc-lattice",
+    "Resources": [
+      "arn:aws:vpc-lattice:us-east-1:111122223333:service/svc-0a1b2c"
+    ],
+    "DetailType": "VPCLattice5xxDrift",
+    "Detail": "{\"service\":\"checkout\",\"http_5xx_pct\":12.4}",
+    "EventBusName": "orderflow-ops-bus"
+  }
+]

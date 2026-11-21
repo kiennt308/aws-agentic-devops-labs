@@ -1,0 +1,140 @@
+{
+  "focus_version": "1.2",
+  "table_name": "FOCUS_1_2_AWS",
+  "owner": "Kien Nguyen",
+  "license": "Apache-2.0",
+  "billing_period": "2026-11",
+  "team_outcomes": [
+    {
+      "orderflow_team": "checkout-sre",
+      "agent_space_id": "orderflow-prod-ops-space",
+      "incidents_resolved": 180
+    },
+    {
+      "orderflow_team": "payments-platform",
+      "agent_space_id": "orderflow-prod-ops-space",
+      "incidents_resolved": 120
+    },
+    {
+      "orderflow_team": "data-reliability",
+      "agent_space_id": "orderflow-staging-ops-space",
+      "incidents_resolved": 90
+    }
+  ],
+  "records": [
+    {
+      "ChargeId": "chg-001",
+      "ServiceName": "Amazon Bedrock",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "1M-Tokens",
+      "UsageQuantity": 420.0,
+      "ListCost": 336.00,
+      "ContractedCost": 302.40,
+      "BilledCost": 72.50,
+      "EffectiveCost": 68.40,
+      "UncachedBaselineCost": 302.40,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "cr-bedrock-nova-us1",
+      "Tags": {
+        "orderflow_team": "checkout-sre",
+        "agent_space_id": "orderflow-prod-ops-space",
+        "cache_mode": "explicit_cached"
+      }
+    },
+    {
+      "ChargeId": "chg-002",
+      "ServiceName": "AWS DevOps Agent",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "agent-seconds",
+      "UsageQuantity": 36000.0,
+      "ListCost": 180.00,
+      "ContractedCost": 162.00,
+      "BilledCost": 162.00,
+      "EffectiveCost": 147.60,
+      "UncachedBaselineCost": 147.60,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "",
+      "Tags": {
+        "orderflow_team": "checkout-sre",
+        "agent_space_id": "orderflow-prod-ops-space",
+        "cache_mode": "not_applicable"
+      }
+    },
+    {
+      "ChargeId": "chg-003",
+      "ServiceName": "Amazon Bedrock",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "1M-Tokens",
+      "UsageQuantity": 300.0,
+      "ListCost": 240.00,
+      "ContractedCost": 216.00,
+      "BilledCost": 56.00,
+      "EffectiveCost": 52.80,
+      "UncachedBaselineCost": 216.00,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "cr-bedrock-nova-us1",
+      "Tags": {
+        "orderflow_team": "payments-platform",
+        "agent_space_id": "orderflow-prod-ops-space",
+        "cache_mode": "explicit_cached"
+      }
+    },
+    {
+      "ChargeId": "chg-004",
+      "ServiceName": "Amazon Bedrock AgentCore",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "vCPU-seconds",
+      "UsageQuantity": 90000.0,
+      "ListCost": 100.00,
+      "ContractedCost": 91.20,
+      "BilledCost": 91.20,
+      "EffectiveCost": 91.20,
+      "UncachedBaselineCost": 91.20,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "",
+      "Tags": {
+        "orderflow_team": "payments-platform",
+        "agent_space_id": "orderflow-prod-ops-space",
+        "cache_mode": "not_applicable"
+      }
+    },
+    {
+      "ChargeId": "chg-005",
+      "ServiceName": "Amazon Bedrock",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "1M-Tokens",
+      "UsageQuantity": 150.0,
+      "ListCost": 120.00,
+      "ContractedCost": 108.00,
+      "BilledCost": 38.00,
+      "EffectiveCost": 36.00,
+      "UncachedBaselineCost": 108.00,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "",
+      "Tags": {
+        "orderflow_team": "data-reliability",
+        "agent_space_id": "orderflow-staging-ops-space",
+        "cache_mode": "implicit_cached"
+      }
+    },
+    {
+      "ChargeId": "chg-006",
+      "ServiceName": "AWS DevOps Agent",
+      "ChargeCategory": "Usage",
+      "UsageUnit": "agent-seconds",
+      "UsageQuantity": 18000.0,
+      "ListCost": 90.00,
+      "ContractedCost": 81.00,
+      "BilledCost": 81.00,
+      "EffectiveCost": 81.00,
+      "UncachedBaselineCost": 81.00,
+      "InvoiceId": "INV-2026-11-001",
+      "CapacityReservationId": "",
+      "Tags": {
+        "orderflow_team": "data-reliability",
+        "agent_space_id": "orderflow-staging-ops-space",
+        "cache_mode": "not_applicable"
+      }
+    }
+  ]
+}

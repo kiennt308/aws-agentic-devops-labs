@@ -1,0 +1,22 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: StrandsAgentSpec
+metadata:
+  name: orderflow-aws-triage-agent
+  owner: kien-nguyen
+spec:
+  framework: strands-agents-sdk
+  sdk_version: v1.64.0
+  agent_id: orderflow-aws-triage-agent
+  decision_model: SystemOneDecisionModel
+  max_turns: 8
+  max_input_tokens_budget: 24000
+  agent_cancel_supported: true
+  uses_deprecated_strands_tools: false
+  middleware:
+    - secret_redactor
+    - token_budget_guard
+  s3_vectors:
+    index_fixture: ch02/05-s3-vectors-runbook-index.json
+    top_k: 2
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

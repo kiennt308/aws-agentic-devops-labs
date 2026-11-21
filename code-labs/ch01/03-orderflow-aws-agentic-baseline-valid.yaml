@@ -1,0 +1,22 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AwsAgenticPlatformBaseline
+metadata:
+  name: orderflow-global-agentic-ops
+  owner: kien-nguyen
+spec:
+  platform: orderflow-global
+  framework: strands-agents-sdk
+  sdk_version: v1.64.0
+  max_turns: 8
+  max_input_tokens_budget: 24000
+  agent_cancel_supported: true
+  hosting_plane: bedrock-agentcore
+  session_isolation: microvm
+  memory_namespace_scoped_by_account: true
+  identity_mode: oauth-and-iam-delegation
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  audit_store: kms-multi-region-cloudtrail-s3
+  billing_export: FOCUS_1_2_AWS
+  imdsv1_allowed: false
+  static_akia_keys: false
+  uses_deprecated_strands_tools: false

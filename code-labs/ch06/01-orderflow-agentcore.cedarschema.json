@@ -1,0 +1,113 @@
+{
+  "AgentCore": {
+    "commonTypes": {
+      "ToolContext": {
+        "type": "Record",
+        "attributes": {
+          "region": {"type": "String", "required": false},
+          "environment": {"type": "String", "required": false},
+          "db_cluster_id": {"type": "String", "required": false},
+          "skip_final_snapshot": {
+            "type": "Boolean",
+            "required": false
+          },
+          "allow_destructive": {
+            "type": "Boolean",
+            "required": false
+          },
+          "pending_window_in_days": {
+            "type": "Long",
+            "required": false
+          },
+          "policy_arn": {"type": "String", "required": false}
+        }
+      }
+    },
+    "entityTypes": {
+      "OAuthUser": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "sub": {"type": "String", "required": true},
+            "scope": {"type": "String", "required": true},
+            "role": {"type": "String", "required": false},
+            "tenant_id": {"type": "String", "required": false}
+          }
+        }
+      },
+      "IamEntity": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "arn": {"type": "String", "required": true},
+            "scope": {"type": "String", "required": true},
+            "account_id": {"type": "String", "required": true}
+          }
+        }
+      },
+      "Gateway": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "gateway_id": {"type": "String", "required": true},
+            "gateway_arn": {"type": "String", "required": true},
+            "account_id": {"type": "String", "required": true},
+            "region": {"type": "String", "required": true},
+            "environment": {"type": "String", "required": true}
+          }
+        }
+      }
+    },
+    "actions": {
+      "cloudwatch___get_metric_data": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "aurora___describe_db_clusters": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "eks___list_insights": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "devopsagent___list_journal_records": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "aurora___delete_db_cluster": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "kms___schedule_key_deletion": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      },
+      "iam___attach_role_policy": {
+        "appliesTo": {
+          "principalTypes": ["OAuthUser", "IamEntity"],
+          "resourceTypes": ["Gateway"],
+          "context": {"type": "ToolContext"}
+        }
+      }
+    }
+  }
+}

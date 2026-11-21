@@ -1,0 +1,24 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AgentCoreRuntimeGatewaySpec
+metadata:
+  name: orderflow-agentcore-prod
+  owner: kien-nguyen
+spec:
+  hosting_plane: bedrock-agentcore
+  session_isolation: microvm
+  memory_namespace_scoped_by_account: true
+  identity_mode: oauth-and-iam-delegation
+  gateway_arn: "\
+    arn:aws:bedrock-agentcore:us-east-1:111122223333:\
+    gateway/orderflow-ops-gw"
+  runtime:
+    idle_timeout_seconds: 900
+    max_lifetime_seconds: 3600
+    code_interpreter_sandbox: microvm-isolated
+  memory_partitions:
+    - account_id: "111122223333"
+      namespace: prod/orderflow-ops
+    - account_id: "222233334444"
+      namespace: staging/orderflow-ops
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

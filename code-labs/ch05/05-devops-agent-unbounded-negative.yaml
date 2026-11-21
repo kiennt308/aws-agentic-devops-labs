@@ -1,0 +1,11 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AwsDevOpsAgentSpec
+metadata:
+  name: orderflow-devops-agent-unbounded
+spec:
+  service: aws-devops-agent
+  agent_space_id: ""
+  max_agent_seconds_per_execution: 1800
+  journal_record_immutable: false
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

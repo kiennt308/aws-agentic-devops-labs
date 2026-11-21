@@ -1,0 +1,44 @@
+[
+  {
+    "agentSpaceId": "orderflow-prod-ops-space",
+    "executionId": "exec-20261120-aurora-01",
+    "recordId": "rec-0001",
+    "recordType": "INVESTIGATION_STARTED",
+    "content": "Triggered on AuroraLockCascade for orderflow-pg18.",
+    "createdAt": "2026-11-20T02:00:05Z",
+    "userReference": "iam:111122223333:role/sre-oncall",
+    "prevHash": "sha256:0000000000000000000000000000000000000000000",
+    "recordHash": "sha256:DadG-itVuq5JeQRT6Lfv9M_APUA3iMvuhc-7loEdXuk"
+  },
+  {
+    "agentSpaceId": "orderflow-prod-ops-space",
+    "executionId": "exec-20261120-aurora-01",
+    "recordId": "rec-0002",
+    "recordType": "TOOL_INVOCATION",
+    "content": "Queried cloudwatch___get_metric_data: 412 active locks.",
+    "createdAt": "2026-11-20T02:00:19Z",
+    "prevHash": "sha256:DadG-itVuq5JeQRT6Lfv9M_APUA3iMvuhc-7loEdXuk",
+    "recordHash": "sha256:gqud8fV6Q7GUztHO1xSf0utFUvnd-c8cnW9UD0_yP2U"
+  },
+  {
+    "agentSpaceId": "orderflow-prod-ops-space",
+    "executionId": "exec-20261120-aurora-01",
+    "recordId": "rec-0003",
+    "recordType": "CAUSAL_HYPOTHESIS",
+    "content": "Aurora lock chain drove VPCLattice5xxDrift surge.",
+    "createdAt": "2026-11-20T02:01:04Z",
+    "prevHash": "sha256:gqud8fV6Q7GUztHO1xSf0utFUvnd-c8cnW9UD0_yP2U",
+    "recordHash": "sha256:P71H5YJ9_kgL0-mQbabrzS6PRNnqKdNQGeWpl2Cc83k"
+  },
+  {
+    "agentSpaceId": "orderflow-prod-ops-space",
+    "executionId": "exec-20261120-aurora-01",
+    "recordId": "rec-0004",
+    "recordType": "MITIGATION_RECOMMENDED",
+    "content": "Terminate idle blocker pid 88412; shift reads.",
+    "createdAt": "2026-11-20T02:01:48Z",
+    "userReference": "iam:111122223333:role/sre-oncall",
+    "prevHash": "sha256:P71H5YJ9_kgL0-mQbabrzS6PRNnqKdNQGeWpl2Cc83k",
+    "recordHash": "sha256:EYnNw2YaHqqA-OXhQ28hJB5Zm95Eo8OjGDbPcjXbqqA"
+  }
+]

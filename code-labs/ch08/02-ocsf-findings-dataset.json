@@ -1,0 +1,116 @@
+{
+  "owner": "Kien Nguyen",
+  "license": "Apache-2.0",
+  "ocsf_detection_findings": [
+    {
+      "finding_uid": "ocsf-gr-2004-01",
+      "class_uid": 2004,
+      "class_name": "Detection Finding",
+      "category_uid": 2,
+      "ocsf_version": "1.6.0",
+      "upstream_extensions_version": "1.9.0",
+      "severity": "High",
+      "account_id": "222233334444",
+      "region": "us-east-1",
+      "principal_arn": "arn:aws:iam::222233334444:role/shadow-ml-runner",
+      "src_ip": "10.42.8.19",
+      "title": "Bedrock Guardrails Prompt Attack Blocked",
+      "event_time": "2026-11-20T01:14:05Z",
+      "ai_agent": {
+        "agent_id": "shadow-triage-worker",
+        "session_id": "sess-compromised-991",
+        "hosting_plane": "unmanaged-ec2"
+      },
+      "delegation": {
+        "delegator_arn": "arn:aws:iam::222233334444:role/ci-bot",
+        "scope": "bedrock:InvokeModel"
+      }
+    },
+    {
+      "finding_uid": "ocsf-gr-2004-02",
+      "class_uid": 2004,
+      "class_name": "Detection Finding",
+      "category_uid": 2,
+      "ocsf_version": "1.6.0",
+      "upstream_extensions_version": "1.9.0",
+      "severity": "Low",
+      "account_id": "111122223333",
+      "region": "us-east-1",
+      "principal_arn": "arn:aws:iam::111122223333:role/ops-agent",
+      "src_ip": "10.10.2.15",
+      "title": "PII Email Redacted in Triage Summary",
+      "event_time": "2026-11-20T01:12:00Z",
+      "ai_agent": {
+        "agent_id": "orderflow-aws-triage-agent",
+        "session_id": "sess-prod-ops-104",
+        "hosting_plane": "bedrock-agentcore"
+      },
+      "delegation": {
+        "delegator_arn": "arn:aws:iam::111122223333:role/sre-lead",
+        "scope": "ops:read"
+      }
+    }
+  ],
+  "guardduty_ai_alerts": [
+    {
+      "alert_id": "gd-ai-cost-01",
+      "finding_type": "AI:IAMUser/CostHarvesting",
+      "category": "cost_harvesting",
+      "account_id": "222233334444",
+      "principal_arn": "arn:aws:iam::222233334444:role/shadow-ml-runner",
+      "src_ip": "10.42.8.19",
+      "model_id": "anthropic.claude-sonnet-4-6-v1",
+      "anomalous_tokens": 4850000,
+      "estimated_burst_usd": 72.75,
+      "event_time": "2026-11-20T01:14:10Z"
+    }
+  ],
+  "cloudtrail_iam_sessions": [
+    {
+      "event_id": "ct-evt-771",
+      "event_name": "AssumeRole",
+      "account_id": "222233334444",
+      "principal_arn": "arn:aws:iam::222233334444:role/shadow-ml-runner",
+      "session_id": "sess-compromised-991",
+      "access_key_id": "ASIAQ3SHADOW9912",
+      "src_ip": "10.42.8.19",
+      "user_agent": "python-requests/2.32.3",
+      "event_time": "2026-11-20T01:10:02Z"
+    },
+    {
+      "event_id": "ct-evt-772",
+      "event_name": "AssumeRole",
+      "account_id": "111122223333",
+      "principal_arn": "arn:aws:iam::111122223333:role/ops-agent",
+      "session_id": "sess-prod-ops-104",
+      "access_key_id": "ASIAQ3OPSAGENT01",
+      "src_ip": "10.10.2.15",
+      "user_agent": "bedrock-agentcore-runtime/2026.11",
+      "event_time": "2026-11-20T01:11:30Z"
+    }
+  ],
+  "vpc_flow_logs": [
+    {
+      "flow_id": "vpc-fl-881",
+      "account_id": "222233334444",
+      "src_ip": "10.42.8.19",
+      "dst_ip": "198.51.100.77",
+      "dst_port": 443,
+      "protocol": 6,
+      "bytes_sent": 18432000,
+      "action": "ACCEPT",
+      "flow_time": "2026-11-20T01:14:45Z"
+    },
+    {
+      "flow_id": "vpc-fl-882",
+      "account_id": "111122223333",
+      "src_ip": "10.10.2.15",
+      "dst_ip": "10.10.2.250",
+      "dst_port": 443,
+      "protocol": 6,
+      "bytes_sent": 64200,
+      "action": "ACCEPT",
+      "flow_time": "2026-11-20T01:12:05Z"
+    }
+  ]
+}

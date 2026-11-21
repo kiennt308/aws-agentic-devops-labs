@@ -1,0 +1,23 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AwsDevOpsAgentSpec
+metadata:
+  name: orderflow-devops-agent-spaces
+  owner: kien-nguyen
+spec:
+  service: aws-devops-agent
+  agent_space_id: orderflow-prod-ops-space
+  max_agent_seconds_per_execution: 300
+  journal_record_immutable: true
+  pillars:
+    - Resolve
+    - Prevent
+    - Operate
+  isolated_spaces:
+    - space_id: orderflow-prod-ops-space
+      account_id: "111122223333"
+    - space_id: orderflow-staging-ops-space
+      account_id: "222233334444"
+  eventbridge_bus: orderflow-ops-bus
+  deduplication_window_seconds: 180
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

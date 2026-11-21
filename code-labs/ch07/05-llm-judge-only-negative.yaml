@@ -1,0 +1,14 @@
+# Copyright (c) 2026 Kien Nguyen (Apache-2.0)
+apiVersion: orderflow.aws.agentic/v1
+kind: BedrockGuardrailPolicy
+metadata:
+  name: legacy-llm-judge-only-negative
+  owner: kien-nguyen
+spec:
+  guardrail_layer: bedrock-guardrails
+  compliance_verifier: llm-as-a-judge
+  ocsf_class_uid: 1001
+  prompt_attack_filter:
+    enabled: false
+  pii_redaction:
+    enabled: false

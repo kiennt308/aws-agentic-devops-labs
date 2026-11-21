@@ -1,0 +1,11 @@
+{
+  "owner": "Kien Nguyen",
+  "license": "Apache-2.0",
+  "assessment_id": "orderflow-aws-agentic-prr-blocked",
+  "finops_prr": true,
+  "prompt_caching_enabled": false,
+  "focus_version": "1.0",
+  "prr_score": 12,
+  "prr_max_score": 20,
+  "status": "BLOCKED"
+}

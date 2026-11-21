@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Negative CFN fixture with hallucinated and retired specs.
+Resources:
+  HallucinatedAuditBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: orderflow-hallucinated-public-bucket
+      AccessControl: PublicRead
+      AutoMagicEncrypt: true
+
+  RetiredCloudTrailLake:
+    Type: AWS::CloudTrail::EventDataStore
+    Properties:
+      Name: orderflow-legacy-trail-eds
+      MultiRegionEnabled: true
+      RetentionPeriod: 365
+      TerminationProtectionEnabled: false

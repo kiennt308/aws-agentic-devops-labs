@@ -1,0 +1,60 @@
+{
+  "policy_id": "orderflow-ops-compliance-v1",
+  "owner": "Kien Nguyen",
+  "license": "Apache-2.0",
+  "domain_variables": {
+    "env": {
+      "type": "enum",
+      "values": ["prod", "staging", "dev"]
+    },
+    "error_budget_remaining_pct": {
+      "type": "number",
+      "min": 0.0,
+      "max": 100.0
+    },
+    "approval_ticket_present": {"type": "boolean"},
+    "action_reversible": {"type": "boolean"},
+    "change_freeze_active": {"type": "boolean"}
+  },
+  "ambiguous_phrases": [
+    "prod-like",
+    "maybe",
+    "soon",
+    "low budget",
+    "around",
+    "mostly",
+    "emergency-ish",
+    "partial freeze"
+  ],
+  "rules": [
+    {
+      "rule_id": "R1_PROD_FREEZE_BLOCK",
+      "effect": "DENY_REMEDIATION",
+      "description": "Deny remediation in prod during active freeze.",
+      "all_of": [
+        {"var": "env", "op": "==", "value": "prod"},
+        {"var": "change_freeze_active", "op": "==", "value": true}
+      ]
+    },
+    {
+      "rule_id": "R2_PROD_BUDGET_TICKET",
+      "effect": "DENY_REMEDIATION",
+      "description": "Prod with <10% error budget needs approval.",
+      "all_of": [
+        {"var": "env", "op": "==", "value": "prod"},
+        {"var": "error_budget_remaining_pct", "op": "<", "value": 10.0},
+        {"var": "approval_ticket_present", "op": "==", "value": false}
+      ]
+    },
+    {
+      "rule_id": "R3_IRREVERSIBLE_TICKET",
+      "effect": "DENY_REMEDIATION",
+      "description": "Irreversible actions require approval ticket.",
+      "all_of": [
+        {"var": "action_reversible", "op": "==", "value": false},
+        {"var": "approval_ticket_present", "op": "==", "value": false}
+      ]
+    }
+  ],
+  "default_effect": "ALLOW_REMEDIATION"
+}

@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: OrderFlow Global grounded KMS, EventBus, and S3 template.
+Resources:
+  OrderFlowOpsKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: OrderFlow multi-region ops audit encryption key
+      EnableKeyRotation: true
+      MultiRegion: true
+      KeyPolicy:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: EnableRootPermissions
+            Effect: Allow
+            Principal:
+              AWS: "arn:aws:iam::111122223333:root"
+            Action: "kms:*"
+            Resource: "*"
+
+  OrderFlowOpsEventBus:
+    Type: AWS::Events::EventBus
+    Properties:
+      Name: orderflow-ops-bus
+
+  OrderFlowAuditBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: orderflow-ops-audit-111122223333
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - BucketKeyEnabled: true
+            ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
+              KMSMasterKeyID:
+                Fn::GetAtt:
+                  - OrderFlowOpsKey
+                  - Arn
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Owner
+          Value: kien-nguyen
+        - Key: Environment
+          Value: prod

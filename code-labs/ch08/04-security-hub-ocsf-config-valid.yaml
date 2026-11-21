@@ -1,0 +1,19 @@
+# Copyright (c) 2026 Kien Nguyen (Apache-2.0)
+apiVersion: orderflow.aws.agentic/v1
+kind: SecurityHubAiInventoryPolicy
+metadata:
+  name: orderflow-security-hub-ocsf
+  owner: kien-nguyen
+spec:
+  security_plane: security-hub-ai-inventory
+  inspector_sbom_enabled: true
+  guardduty_dns_ai_discovery: true
+  guardduty_ai_protection: true
+  ocsf_version: "1.6.0"
+  ocsf_upstream_extensions: "1.9.0"
+  ocsf_class_uid: 2004
+  security_lake_enabled: true
+  monitored_shadow_packages:
+    - ollama
+    - vllm
+    - text-generation-inference

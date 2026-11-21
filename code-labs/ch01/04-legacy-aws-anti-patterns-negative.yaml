@@ -1,0 +1,22 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AwsAgenticPlatformBaseline
+metadata:
+  name: legacy-aws-bot-anti-pattern
+spec:
+  platform: orderflow-global
+  framework: strands-agents-sdk
+  packages:
+    - strands-agents-tools
+  uses_deprecated_strands_tools: true
+  max_turns: 25
+  max_input_tokens_budget: 0
+  agent_cancel_supported: false
+  hosting_plane: custom-ecs-wrapper
+  session_isolation: shared-container
+  memory_namespace_scoped_by_account: false
+  identity_mode: static_secret
+  telemetry_backend: xray_daemon
+  audit_store: cloudtrail_lake_eventdatastore
+  billing_export: CUR_1_0
+  imdsv1_allowed: true
+  static_akia_keys: true

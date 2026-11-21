@@ -1,0 +1,11 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AgentCoreRuntimeGatewaySpec
+metadata:
+  name: orderflow-unisolated-ecs-wrapper
+spec:
+  hosting_plane: custom-ecs-wrapper
+  session_isolation: shared-container
+  memory_namespace_scoped_by_account: false
+  identity_mode: static_secret
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

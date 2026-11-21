@@ -1,0 +1,15 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: StrandsAgentSpec
+metadata:
+  name: orderflow-legacy-unbounded-agent
+spec:
+  framework: strands-agents-sdk
+  agent_id: orderflow-legacy-triage
+  packages:
+    - strands-agents-tools
+  uses_deprecated_strands_tools: true
+  max_turns: 25
+  max_input_tokens_budget: 0
+  agent_cancel_supported: false
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

@@ -1,0 +1,11 @@
+# Copyright (c) 2026 Kien Nguyen (Apache-2.0)
+apiVersion: orderflow.aws.agentic/v1
+kind: SecurityHubAiInventoryPolicy
+metadata:
+  name: blind-shadow-ai-negative
+  owner: kien-nguyen
+spec:
+  security_plane: security-hub-ai-inventory
+  inspector_sbom_enabled: false
+  guardduty_dns_ai_discovery: false
+  guardduty_ai_protection: false

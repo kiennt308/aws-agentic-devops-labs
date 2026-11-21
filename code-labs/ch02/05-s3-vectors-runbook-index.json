@@ -1,0 +1,39 @@
+{
+  "index_name": "orderflow-s3-vectors-runbooks",
+  "dimension": 6,
+  "metric": "cosine",
+  "documents": [
+    {
+      "runbook_id": "rb-aurora-pg18-lock",
+      "service": "aurora-pg18",
+      "title": "Aurora PG18 Lock Cascade and Writer Failover",
+      "summary": "Inspect pg_locks blocker chains and writer waits.",
+      "recommended_tool": "aurora___describe_db_clusters",
+      "vector": [0.78, 0.12, 0.08, 0.05, 0.60, 0.05]
+    },
+    {
+      "runbook_id": "rb-vpc-lattice-5xx",
+      "service": "vpc-lattice",
+      "title": "VPC Lattice Target Group 5xx Routing Drift",
+      "summary": "Check listener weights and unhealthy targets.",
+      "recommended_tool": "cloudwatch___get_metric_data",
+      "vector": [0.10, 0.82, 0.12, 0.04, 0.54, 0.08]
+    },
+    {
+      "runbook_id": "rb-lambda-throttle",
+      "service": "lambda-checkout",
+      "title": "Lambda Checkout Concurrency Throttle Triage",
+      "summary": "Audit reserved concurrency and SQS DLQ depth.",
+      "recommended_tool": "cloudwatch___get_metric_data",
+      "vector": [0.12, 0.15, 0.85, 0.05, 0.45, 0.20]
+    },
+    {
+      "runbook_id": "rb-valkey-failover",
+      "service": "valkey-session",
+      "title": "ElastiCache Valkey 8.1 Slot Migration and Memory",
+      "summary": "Verify replication lag and eviction counters.",
+      "recommended_tool": "cloudwatch___get_metric_data",
+      "vector": [0.10, 0.08, 0.10, 0.88, 0.42, 0.10]
+    }
+  ]
+}

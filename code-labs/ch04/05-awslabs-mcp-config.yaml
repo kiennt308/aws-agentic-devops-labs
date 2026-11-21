@@ -1,0 +1,24 @@
+apiVersion: orderflow.aws.agentic/v1
+kind: AwslabsMcpConfig
+metadata:
+  name: orderflow-awslabs-mcp-mesh
+  owner: kien-nguyen
+spec:
+  protocol: MCP
+  protocol_version: "2026-07-28"
+  transport: streamable-http
+  iam_agent_caller_condition_key: true
+  caller_condition_keys:
+    - "aws:PrincipalTag/agent-caller"
+    - "aws:CalledVia"
+  mcp_servers:
+    - awslabs.aws-documentation-mcp-server
+    - awslabs.cloudwatch-mcp-server
+    - awslabs.eks-mcp-server
+    - awslabs.terraform-mcp-server
+    - awslabs.cfn-mcp-server
+  local_rehearsal:
+    server: "@localstack/localstack-mcp-server"
+    endpoint: "http://127.0.0.1:4566"
+  telemetry_backend: cloudwatch-otlp-and-aws-spans
+  static_akia_keys: false

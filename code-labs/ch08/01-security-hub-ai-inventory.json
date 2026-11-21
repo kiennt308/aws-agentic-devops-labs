@@ -1,0 +1,60 @@
+{
+  "organization_id": "o-orderflow99",
+  "owner": "Kien Nguyen",
+  "license": "Apache-2.0",
+  "inventory_generated_at": "2026-11-20T01:00:00Z",
+  "assets": [
+    {
+      "asset_id": "ai-asset-001",
+      "account_id": "111122223333",
+      "region": "us-east-1",
+      "service": "bedrock-agentcore",
+      "resource_id": "gateway/orderflow-ops-gw",
+      "model_id": "us.amazon.nova-pro-v1:0",
+      "discovery_source": "AWS_CONFIG",
+      "approval_status": "APPROVED",
+      "sbom_packages": ["strands-agents", "bedrock-agentcore"],
+      "queried_domain": null,
+      "dst_ip": null
+    },
+    {
+      "asset_id": "ai-asset-002",
+      "account_id": "222233334444",
+      "region": "us-east-1",
+      "service": "ec2-container",
+      "resource_id": "i-09f3a8b21c44e7012",
+      "model_id": "llama3.3-70b-local",
+      "discovery_source": "INSPECTOR_SBOM",
+      "approval_status": "UNAPPROVED_SHADOW_AI",
+      "sbom_packages": ["ollama", "llama.cpp"],
+      "queried_domain": null,
+      "dst_ip": null
+    },
+    {
+      "asset_id": "ai-asset-003",
+      "account_id": "222233334444",
+      "region": "us-west-2",
+      "service": "ecr-image",
+      "resource_id": "ecr/ml-sandbox-vllm",
+      "model_id": "qwen2.5-coder-32b",
+      "discovery_source": "INSPECTOR_SBOM",
+      "approval_status": "UNAPPROVED_SHADOW_AI",
+      "sbom_packages": ["vllm", "torch", "transformers"],
+      "queried_domain": null,
+      "dst_ip": null
+    },
+    {
+      "asset_id": "ai-asset-004",
+      "account_id": "222233334444",
+      "region": "us-east-1",
+      "service": "vpc-dns-egress",
+      "resource_id": "i-09f3a8b21c44e7012",
+      "model_id": "external-unmanaged-llm",
+      "discovery_source": "GUARDDUTY_DNS",
+      "approval_status": "UNAPPROVED_EXTERNAL_AI",
+      "sbom_packages": [],
+      "queried_domain": "api.unapproved-llm.example",
+      "dst_ip": "198.51.100.77"
+    }
+  ]
+}

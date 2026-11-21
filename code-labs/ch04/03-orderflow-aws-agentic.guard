@@ -1,0 +1,44 @@
+# Copyright (c) 2026 Kien Nguyen (Apache-2.0)
+# cfn-guard v3.2.1 rules for OrderFlow AWS Agentic CloudFormation
+
+let s3_buckets = Resources.*[ Type == "AWS::S3::Bucket" ]
+let retired_cds = Resources.*[
+  Type == "AWS::CloudTrail::EventDataStore"
+]
+
+rule ban_retired_cloudtrail_event_data_store {
+  %retired_cds empty
+    <<RETIRED_AWS_UNDERLAY: CloudTrail EventDataStore closed May 2026>>
+}
+
+rule s3_public_access_block_required when %s3_buckets !empty {
+  %s3_buckets.Properties.PublicAccessBlockConfiguration exists
+  %s3_buckets.Properties.PublicAccessBlockConfiguration {
+    BlockPublicAcls == true
+    BlockPublicPolicy == true
+    IgnorePublicAcls == true
+    RestrictPublicBuckets == true
+  }
+    <<S3 bucket must block all four public access vectors>>
+}
+
+rule s3_bucket_encryption_required when %s3_buckets !empty {
+  %s3_buckets.Properties.BucketEncryption exists
+  %s3_buckets.Properties.BucketEncryption {
+    ServerSideEncryptionConfiguration[*] {
+      ServerSideEncryptionByDefault.SSEAlgorithm in [
+        "AES256",
+        "aws:kms"
+      ]
+    }
+  }
+    <<S3 bucket must configure AES256 or aws:kms BucketEncryption>>
+}
+
+rule s3_ownership_controls_required when %s3_buckets !empty {
+  %s3_buckets.Properties.OwnershipControls exists
+  %s3_buckets.Properties.OwnershipControls.Rules[*] {
+    ObjectOwnership == "BucketOwnerEnforced"
+  }
+    <<S3 bucket must set OwnershipControls to BucketOwnerEnforced>>
+}

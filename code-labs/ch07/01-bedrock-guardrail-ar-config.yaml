@@ -1,0 +1,31 @@
+# Copyright (c) 2026 Kien Nguyen (Apache-2.0)
+apiVersion: orderflow.aws.agentic/v1
+kind: BedrockGuardrailPolicy
+metadata:
+  name: orderflow-bedrock-guardrail-ar
+  owner: kien-nguyen
+spec:
+  guardrail_layer: bedrock-guardrails
+  compliance_verifier: automated-reasoning
+  ocsf_class_uid: 2004
+  ocsf_version: "1.6.0"
+  prompt_attack_filter:
+    enabled: true
+    strength: HIGH
+  pii_redaction:
+    enabled: true
+    action: ANONYMIZE
+    entities:
+      - AWS_ACCESS_KEY
+      - EMAIL
+      - PHONE
+      - SSN
+  contextual_grounding:
+    enabled: true
+    grounding_threshold: 0.85
+    relevance_threshold: 0.75
+  automated_reasoning:
+    policy_id: orderflow-ops-compliance-v1
+    mode: DETECT
+    rules_file: ch07/02-orderflow-compliance-rules.json
+    ambiguity_threshold: 0.0
